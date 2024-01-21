@@ -1,34 +1,26 @@
 public class Main {
     public static void main(String[] args) {
-        // Create an object of MyQueue class
-        MyQueue myQueue = new MyQueue(5);
+        // Create an object of MyQueue class with a size of 5
+        MyQueue queue = new MyQueue(5);
 
-        // Try to remove an element from the queue => queue is empty.
-        // Cannot remove!
-        myQueue.remove();
+        // Try to delete element from the queue
+        System.out.println("Dequeue Operation : " + queue.dequeue());
 
-        // Currently, the queue is empty => true
-        System.out.println("Is the queue empty? " + myQueue.isEmpty());
+        // Insert elements to the queue
+        for(int i = 1; i <= 5; i++) {
+            System.out.println("Enqueue Operation : " + i);
+            queue.enqueue(i);
+        }
 
-        // Add elements to the queue
-        myQueue.add(10); // .add() will throw IllegalStateException if no space available
-        myQueue.offer(20); // .offer()  will return false if element cannot be inserted due capacity
-        myQueue.offer(30);
-        myQueue.offer(30);
-        myQueue.offer(30);
+        // Check when queue is full
+        System.out.println("Is queue full? : " + queue.isFull());
 
-        myQueue.offer(300);
+        // Removes element until it is empty
+        while(!queue.isEmpty()) {
+            System.out.println("Dequeue Operation : " + queue.dequeue());
+        }
 
-
-        // Check when the queue is full => not full yet (3 elements => false)
-        System.out.println("Is the queue full? " + (myQueue.size() == myQueue.SIZE));
-
-        // Removes elements until it is empty
-        myQueue.remove(); // returns and removes the element in front (head) of queue, it throws an NoSuchElementException  when queue is empty
-        myQueue.poll();
-        myQueue.poll();
-
-        // Check if the queue is empty => ture, 0 elements in queue
-        System.out.println("Is the queue empty? " + myQueue.isEmpty());
+        // Check if queue is empty
+        System.out.println("Is queue empty? : " + queue.isEmpty());
     }
 }
